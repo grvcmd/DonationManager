@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <title>Donation Manager</title>
 </head>
 <body>
+<div align="center">
+    <h1>List of Donations</h1>
+    <a href="/new">Add New Donation</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Donation ID</th>
+            <th>Donor ID</th>
+            <th>Date</th>
+            <th>Item Description</th>
+            <th>Item Value</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
 
+        <tr th:each="donation : ${listDonations}">
+            <td th:text="${donation.id}">Donation ID</td>
+            <td th:text="${donation.donorid}">Donor ID</td>
+            <td th:text="${donation.date}">Date</td>
+            <td th:text="${donation.itemdescription}">Item Description</td>
+            <td th:text="${donation.itemvalue}">Item Value</td>
+            <td>
+                <a th:href="@{'/edit/' + ${donation.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${donation.id}}">Delete</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
