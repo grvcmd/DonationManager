@@ -20,4 +20,12 @@ public class DonationController {
 
         return "index";
     }
+
+    @RequestMapping("/new")
+    public String showAddDonationForm(Model model) {
+        Donation donation = new Donation();
+        model.addAttribute("donation", donation);
+
+        return "add_donation";
+    }
 }
