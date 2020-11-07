@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <title>Add New Donation</title>
 </head>
 <body>
+<div align="center">
+    <h1>Add New Donation</h1>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${donation}"
+          method="post">
 
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Item Description:</td>
+                <td><input type="text" th:field="*{itemdescription}" /></td>
+            </tr>
+            <tr>
+                <td>Item Value:</td>
+                <td><input type="text" th:field="*{itemvalue}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Donate</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>
