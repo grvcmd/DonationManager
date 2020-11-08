@@ -64,7 +64,6 @@ public class MainController {
     @RequestMapping(value = "/savedonor", method = RequestMethod.POST)
     public String addDonor(@ModelAttribute("donor") Donor donor) {
         donor.setId(UUID.randomUUID());
-
         donorService.save(donor);
 
         return "redirect:/";
@@ -78,4 +77,12 @@ public class MainController {
 
         return "redirect:/";
     }
+
+    @RequestMapping("/deletedonor/{id}")
+    public String deleteDonor(@PathVariable(name = "id") UUID id) {
+        donorService.delete(id);
+
+        return "redirect:/";
+    }
+
 }
