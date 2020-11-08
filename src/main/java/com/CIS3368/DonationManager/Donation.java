@@ -1,25 +1,35 @@
 package com.CIS3368.DonationManager;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name = "donation")
 public class Donation {
+
+    @Id
+    @Column(name = "id")
     private UUID id;
+
+    @Column(name = "donorid")
     private UUID donorid;
+
+    @Column(name = "date")
     private String date;
+
+    @Column(name = "itemdescription")
     private String itemdescription;
+
+    @Column(name = "itemvalue")
     private double itemvalue;
+
 
     public Donation() {
         super();
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public UUID getId() {
         return id;
     }
@@ -59,4 +69,6 @@ public class Donation {
     public void setItemvalue(double itemvalue) {
         this.itemvalue = itemvalue;
     }
+
+
 }

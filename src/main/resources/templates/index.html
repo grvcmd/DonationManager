@@ -10,11 +10,13 @@
     <h1>List of Donations</h1>
     <a href="/new">Add New Donation</a>
     <br/><br/>
+    <a href="/newdonor">Add New Donor</a>
+    <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
         <tr>
-            <th>Donation ID</th>
-            <th>Donor ID</th>
+            <!-- <th>Donation ID</th> -->
+            <!-- <th>Donor ID</th> -->
             <th>Date</th>
             <th>Item Description</th>
             <th>Item Value</th>
@@ -24,20 +26,41 @@
         <tbody>
 
         <tr th:each="donation : ${listDonations}">
-            <td th:text="${donation.id}">Donation ID</td>
-            <td th:text="${donation.donorid}">Donor ID</td>
-            <td th:text="${donation.date}">Date</td>
+            <!--<td th:text="${donation.id}">Donation ID</td> -->
+            <!--<td th:text="${donation.donorid}">Donor ID</td> -->
+            <td th:text="${donation.date}">Date Donated</td>
             <td th:text="${donation.itemdescription}">Item Description</td>
             <td th:text="${donation.itemvalue}">Item Value</td>
             <td>
-                <a th:href="@{'/edit/' + ${donation.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/delete/' + ${donation.id}}">Delete</a>
             </td>
         </tr>
 
         </tbody>
     </table>
+
+    <br/><br/>
+
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Donor Name</th>
+            <th>Donor ID</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="donor : ${listDonors}">
+            <td th:text="${donor.name}">Donor Name</td>
+            <td th:text="${donor.id}">Donor Id</td>
+            <td>
+                <a th:href="@{'/delete/' + ${donor.id}}">Delete</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
 </div>
 </body>
 </html>
